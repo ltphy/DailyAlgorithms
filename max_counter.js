@@ -8,17 +8,21 @@ function solution(N, A) {
     }
     let count_time = 0;
     let max_counter = 0;
+    let is_updated = false;
     for(let i = 0; i < A.length; i++) {
         let value = A[i] - 1;
         if(value >=0 && value <N) {
             counter_array[value] +=1;
             if(counter_array[value]>max_counter) {
                 max_counter = counter_array[value];
+                is_updated = true;
             }
-        } else if(value === N){
+        } else if(value === N && is_updated){
             for(let j = 0 ;j <N ;j++) {
                 counter_array[j] = max_counter;
             }
+
+            is_updated = false;
         }
     }
     return counter_array;
