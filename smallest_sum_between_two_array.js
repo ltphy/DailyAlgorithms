@@ -23,17 +23,21 @@ function binarySearch(arr, number) {
     }
     return result;
 }
-arr = [-2,-4,0,3,2,5,6];
-arr_distance = [-4,-6,4,9];
+//the different between the smallest distance and smallest sum is distance can be easily
+//found by the nearst number. However, with sum of two number smallest. There might be case of negative and positive number
+// binary search with whole array is O(logn + m).
+// the number should be negative and nearly matched that number. 
+arr = [0,3,2,5,6];
+arr_distance = [9,4,5,6];
 arr.sort();
 let distance = Infinity;
 let value1, value2;
 for(let i = 0; i<arr_distance.length;i++) {
-    let result_idx = binarySearch(arr, arr_distance[i]);
-
-    let cur_distance =  Math.abs(arr[result_idx] -  arr_distance[i]);
-    if(cur_distance < distance) {
-        distance = cur_distance;
+    let current_value = -arr_distance[i];
+    let result_idx = binarySearch(arr, current_value);
+    let cur_sum =  Math.abs(arr[result_idx] + current_value);
+    if(cur_sum < distance) {
+        distance = cur_sum;
         value1 = arr[result_idx];
         value2 = arr_distance[i];
     }
