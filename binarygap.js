@@ -12,14 +12,14 @@ function maximalBinaryGap(N) {
         if(remainder === 1){
             if(count>0 && count > maxGap) {
                 maxGap = count;
-                start = false;
+                // start = false;
             }
-            start = true;
+            // start = true;
             count = 0;
         } else {
-            if(start) {
+            // if(start) {
                 count++;
-            }
+            // }
         }
         if(quotient ===0) {
             break;
@@ -28,6 +28,6 @@ function maximalBinaryGap(N) {
 
     return maxGap;
 };
-let v = 9;
+let v = 260;
 const value = maximalBinaryGap(v);
 console.log(value);

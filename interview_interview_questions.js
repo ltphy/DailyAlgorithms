@@ -201,16 +201,19 @@ var boundNameArrow = unboundNameArrow.bind(person);
 
 console.log(person.getName(), person.getNameArrow(), unboundName(), unboundNameArrow(), boundName(2,18), boundNameArrow());
 for (var i =0; i <3; i++) {
-    setTimeout(function(j){
-        return function() {console.log(j); }
-    }(i), 1000+i);
-}
-for(let i = 0; i<3;i++) {
-    setTimeout(()=>{
-        console.log(i);
-    }, 1000+i);
+    setTimeout(((j)=>{
+        console.log("OUT J", j);
+        return function() {console.log("IN J",j); }
+    })(i), 1000+i);
 }
 
+
+for(var i = 0; i<3;i++) {
+    setTimeout(function(){
+        console.log("I ",i);
+    }, 1000+i);
+}
+console.log("value I ",i);
 // for(let i = 0; i<3;i++) {
 //     setTimeout(()=>{
 //         console.log(i);
@@ -255,17 +258,35 @@ const myObject2 = {
     }
   };
 myObject2.myMethod();
-var testShowTask = {
-    showTasks: function() {
-        var     _this = this
-        this.tasks.forEach(function(task) {
-          alert(_this.name + " wants to " + task);
-        })
-    },
-    showTasks: function() {
-        this.tasks.forEach(function(task) {
-          alert(this.name + " wants to " + task);
-        }.bind(this))
-    }
+// var testShowTask = {
+//     showTasks: function() {
+//         var     _this = this
+//         console.log("SHOW TASK", this);
+//         this.tasks.forEach(function(task) {
+//           alert(_this.name + " wants to " + task);
+//         })
+//     },
+//     showTasks2: function() {
+//         this.tasks.forEach(function(task) {
+//           alert(this.name + " wants to " + task);
+//         }.bind(this))
+//     }
 
+// };
+// show = testShowTask.showTasks;
+// show();
+var value1 = 2;
+let value2 = 4;
+function HelloWorld() {
+    console.log(this);
+    console.log(value1);
+    console.log("VALUE", value2);
+}
+const helloWorld = ()=>{
+    console.log(this);
 };
+HelloWorld();
+helloWorld();
+
+//pass arrow function into another function 
+
