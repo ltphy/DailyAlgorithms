@@ -35,8 +35,42 @@ function sumTwoNumbers(arr, num){
     return false;
 
 }
+function sumTwoNumbersHash(arr, num) {
+    let hash_arr = [];
+    for(let i = 0; i<arr.length;i++){
+        let value = arr[i];
+        let left_over = value % arr.length;
+        if(hash_arr[left_over]===undefined) {
+            hash_arr[left_over] =[value];
+        }
+        else {
+            console.log(hash_arr[left_over]);
+            hash_arr[left_over] = [...hash_arr[left_over], value];
+        }
 
-arr = [1,3,4,6,5,-2];
-num = 0;
-result = sumTwoNumbers(arr, num);
+    }
+    console.log(hash_arr);
+
+    for(let i = 0; i<arr.length;i++) {
+        let value = num - arr[i];
+        if(value !== arr[i]){
+            if(hash_arr[value]!==undefined) {
+                return true;
+            }
+        } else {
+            let values = hash_arr[value];
+            if(values.length>1){
+                return true;
+            }
+        }
+            
+    }
+    return false;
+}
+arr = [1,3,4,6,5,-2,4, -2];
+num = 2;
+result = sumTwoNumbersHash(arr, num);
 console.log(result);
+arr[7] =  8;
+
+console.log(arr[6]);
