@@ -66,7 +66,8 @@ bunny.showTasks("walk");
 
 
 const myObject = { 
-    myMethod: () => { console.log(this); 
+
+    myMethod: () => {  console.log('sth'); console.log(this); 
     } 
 };
 myObject.myMethod();
@@ -84,6 +85,6 @@ var adder = {
 
     }
   };
-method = adder.addThruCall();
+method = adder.addThruCall;
 result = method.call(adder,8);
 console.log(result);

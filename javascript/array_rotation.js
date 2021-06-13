@@ -1,3 +1,4 @@
+
 function arrayRotation(A, K) {
     // write your code in JavaScript (Node.js 8.9.4)
     rotation_value = K % A.length;
