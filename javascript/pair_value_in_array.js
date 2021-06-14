@@ -10,7 +10,7 @@ function PairValue(numbers) {
     });
     let result = 0;
     numbers_map.forEach((value,key)=>{
-        if(value%2!==0) {
+        if(value%2!==0) {                                                                                                                                                                                                                             
             result = key;
         }
     })
