@@ -1,5 +1,6 @@
 // Given an array of numbers, replace each number with the product of all the numbers in the array
 // except the number itself *without* using division.
+// two extra array is created to store the prefix and suffix so take o(n) space
 List<int> productOfOtherNumbers(List<int> numbers) {
   List<int> result = [];
   List<int> leftArray = [1];
@@ -34,19 +35,35 @@ String sumOfElement(String str1, String str2) {
   String result = sum.join(' ');
   return result;
 }
+// 0(1) space 0(n) operations.
 
-List<int> productOfOtherNumbers2(List<int> numbers, List<int> result) {
-  if (result.length == 0) {
-    result.add(1);
-    for (int i = 1; i < numbers.length; i++) {
-      result.add(result[i - 1] * numbers[i - 1]);
-    }
-    productOfOtherNumbers2(numbers, result);
-  } else {
-    for (int i = numbers.length - 1; i < numbers.length; i++) {
-      result.add(result[i + 1] * numbers[i + 1]);
-    }
+List<int> productOfOtherNumbers2(List<int> numbers) {
+  List<int> result = List.filled(numbers.length, 1);
+
+  for (int i = 1; i < numbers.length; i++) {
+    result[i] = (result[i - 1] * numbers[i - 1]);
+  }
+  int prevNum = 1;
+  for (int i = numbers.length - 2; i >= 0; i--) {
+    result[i] *= prevNum * numbers[i + 1];
+    prevNum = numbers[i + 1] * prevNum;
   }
 
+  return result;
+}
+
+List<int> productOfOtherNumbers3(List<int> numbers) {
+  List<int> result = List.filled(numbers.length, 1);
+  int temp = 1;
+  for (int i = 0; i < numbers.length; i++) {
+    result[i] = temp;
+    // multiply previous
+    temp *= numbers[i];
+  }
+  temp = 1;
+  for (int i = numbers.length - 1; i >= 0; i--) {
+    result[i] *= temp;
+    temp *= numbers[i];
+  }
   return result;
 }

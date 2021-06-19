@@ -16,4 +16,7 @@ void main() {
   List<int> array1 = [4, 5, 6, 7];
   List<int> result2 = productOfOtherNumbers(array1);
   print(result2.toString());
+  List<int> result3 = [];
+  result3 = productOfOtherNumbers3(array1);
+  print(result3.toString());
 }
