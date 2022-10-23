@@ -19,6 +19,7 @@ function binarySearch(arr, num){
     }
     return -1;
 }
+
 function findLastAndFirstIndexOcurrence(arr,num) {
     let start = -1;
     let stop = -1;
