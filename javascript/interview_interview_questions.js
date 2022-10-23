@@ -288,5 +288,19 @@ const helloWorld = ()=>{
 HelloWorld();
 helloWorld();
 
-//pass arrow function into another function 
+// //pass arrow function into another function 
 
+// // for loop
+// console.log('START LOG TEXT');
+// function logText() {
+//     for (var i = 1; i <= 5; i++) {
+//         (function(j) {
+//             setTimeout(function(){
+//                 console.log(j);
+//             },100);
+//             return j;
+//         })(i);
+//     }
+// };
+
+// logText();
