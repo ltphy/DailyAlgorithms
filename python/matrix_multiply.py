@@ -13,7 +13,7 @@ class WorldPosition:
 
 def create_rotation_z_matrix(angle = 0): 
     r = R.from_euler('z', angle, degrees=True)
-    return r
+    return ri
 
 def create_matrix(position: WorldPosition): 
     matrix4x4 = np.empty((4,4))
